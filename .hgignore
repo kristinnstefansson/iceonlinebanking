@@ -1,0 +1,41 @@
+# Ignore file constructed using Visual Studio 2003
+# and viewer release source 1_20_15. This ignore
+# file may need additions for other compilers and
+# future client releases.
+
+# use glob syntax.
+syntax: glob
+RegistrationStationSLN_1.3\RegistrationStationSLN_1.3DXCore.Solution\*
+*.gpState
+*.orig
+
+# Ignore VS2003 compiler temporary files for 1_20_15
+*.ilk
+*.res
+*.pyn
+*.pyc
+*.ncb
+*.suo
+*.pch
+*.obj
+*.idb
+BuildLog.*
+*.user
+*.gpstate
+~$*.doc
+~$*.mht
+*.*cc*
+*.vsprops
+*.cache
+
+# Ignore compiled binaries
+#
+syntax: regexp
+/obj/*.*
+/bin/*.*
+/TestResults
+TestResults/*.*
+glob:~*.tmp
+regexp:/_ReSharper.RegistrationStationSLN_1.3
+glob:*.dbmdl
+relre:/debug/*.*
