@@ -131,8 +131,8 @@
   </xs:simpleType>
   <xs:simpleType name="Identifier">
     <xs:annotation>
-      <xs:documentation xml:lang="en-US">An identifier unique to each claimant indicating primarily the account into which payments will be made. Can consist of alphanumeric characters, maximum three letters.</xs:documentation>
-      <xs:documentation xml:lang="is-IS">Auðkenni kröfuhafa sem vísar einkum á númer þess reiknings sem greiðsla til kröfuhafa á að ráðstafast inná. Má vera tölu- og bókstafir alls 3 stafa langt.</xs:documentation>
+      <xs:documentation xml:lang="en-US">TODO Fix translation An identifier unique to each claimant indicating primarily the account into which payments will be made. Can consist of alphanumeric characters, maximum three letters.</xs:documentation>
+      <xs:documentation xml:lang="is-IS">Auðkenni kröfuhafa sem segir til ráðstöfun greiðslu og textalykil kröfu sem tengd er honum. Má vera tölu- og bókstafir alls 3 stafa langt.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="[0-9A-Za-z]{3}"/>
@@ -324,7 +324,7 @@
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:pattern value="[2-9]"/>
+            <xs:pattern value="[2-9A-Z]{1}"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -482,6 +482,12 @@
           <xs:documentation xml:lang="is-IS">Breytt póstfang kröfugreiðanda. Ef sleppt, þá er notað skráð lögheimili greiðanda.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="ClaimantTelephone" type="ct:PhoneNumber" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">Telephone where claimant can be contacted.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Símanúmer kröfuhafa.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="ItemRows" type="clt:ItemRow" minOccurs="0" maxOccurs="20">
         <xs:annotation>
           <xs:documentation xml:lang="en-US">Details of claim.</xs:documentation>
@@ -496,9 +502,9 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="Claim">
+  <xs:complexType name="ClaimBase">
     <xs:annotation>
-      <xs:documentation xml:lang="en-US">Encapsulates a claim, used for creating and changing.</xs:documentation>
+      <xs:documentation xml:lang="en-US">TODO: Encapsulates a claim, used for creating and changing.</xs:documentation>
       <xs:documentation xml:lang="is-IS">Hjúpar innheimtukröfu, notað við stofnun og breytingar.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -522,14 +528,14 @@
       </xs:element>
       <xs:element name="Identifier" type="clt:Identifier">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">The unique identifier of the claimant that the claim relates to.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Auðkenni kröfuhafa sem innheimtukrafan tengist.</xs:documentation>
+          <xs:documentation xml:lang="en-US">TODO: English translation The unique identifier of the claimant that the claim relates to.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Það auðkenni kröfuhafa sem innheimtukrafan tengist og segir til um ráðstöfun greiðslu og textalykil.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Amount" type="ct:Amount">
+      <xs:element name="Principal" type="ct:Amount">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">Amount of claim.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Upphæð innheimtukröfu.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Principal of claim.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Höfuðstóll innheimtukröfu.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Reference" type="clt:Reference">
@@ -616,12 +622,128 @@
           <xs:documentation xml:lang="is-IS">Upplýsingar um í hvaða birtingarkerfi innheimtukrafa er birt ef um slíkt er að ræða.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Printing" type="clt:Printing" minOccurs="0">
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Claim">
+    <xs:annotation>
+      <xs:documentation xml:lang="en-US">TODO: Information about the current status of a claim.</xs:documentation>
+      <xs:documentation xml:lang="is-IS">Upplýsingar um stöðu innheimtukröfu.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="clt:ClaimBase">
+        <xs:sequence>
+          <xs:element name="Status" type="clt:ClaimStatus">
+            <xs:annotation>
+              <xs:documentation xml:lang="en-US">The status of the claim.</xs:documentation>
+              <xs:documentation xml:lang="is-IS">Staða innheimtukröfu.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Printing" type="clt:Printing" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en-US">Information that is used when printing a claim, if it is to be printed by the bank. </xs:documentation>
+              <xs:documentation xml:lang="is-IS">Prentun svæðið er notað ef innheimtukrafa er prentuð hjá banka / sparisjóð til þess að stýra útprentun innheimtukröfunnar. Ef prentun er breytt í breytingarfærslu eftir að búið er að prenta út seðil, hefur það ekki í för með sér að hann sé prentaður út aftur.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ClaimTransactionType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en-US">.</xs:documentation>
+      <xs:documentation xml:lang="is-IS">Færslugerð kröfu.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Creation">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">Information that is used when printing a claim, if it is to be printed by the bank. </xs:documentation>
-          <xs:documentation xml:lang="is-IS">Prentun svæðið er notað ef innheimtukrafa er prentuð hjá banka / sparisjóð til þess að stýra útprentun innheimtukröfunnar. Ef prentun er breytt í breytingarfærslu eftir að búið er að prenta út seðil, hefur það ekki í för með sér að hann sé prentaður út aftur.</xs:documentation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Stofnun kröfu.</xs:documentation>
         </xs:annotation>
-      </xs:element>
+      </xs:enumeration>
+      <xs:enumeration value="Cancellation">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Niðurfelling kröfu af kröfuhafa eða eftir gildandi reglu.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Update">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Breyting á kröfu.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Payment">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Greiðsla á kröfu. Innborgun eða fullnaðargreiðsla.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RepaymentClaimCreation">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Stofnun á endurgreiðslukröfu.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bakfærsla">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">TODO betri þýðing.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Bakfærsla  .</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BakfærðGreiðsla">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Bakfærð greiðsla. Við bakfærslu á fullnaðargreiðslu er greiðslufærslan merkt með A í færslugerð, en bakfærslan fær U í færslugerð.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BakfærðInnborgun">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Bakfærð innborgun. Við bakfærslu á innborgun er innborgunarfærslan merkt.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TransferFromOldBank">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Sameining banka. Krafa hefur verið flutt úr einum banka í annan.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TransferToNewBank">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Sameining banka. Krafa hefur verið flutt í bankann úr öðrum banka.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RepaymentClaimPayment">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Greiðsla á endurgreiðslukröfu.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PayorCancellation">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Niðurfelling kröfugreiðanda á valgreiðslu kröfu.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Refund">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Breyting á kröfu.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ClaimTransaction">
+    <xs:annotation>
+      <xs:documentation xml:lang="en-US">TODO: Information about the current status of a claim.</xs:documentation>
+      <xs:documentation xml:lang="is-IS">Ítarlegar upplýsingar um stöðu og sögu innheimtukröfu.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TransactionType" type="clt:ClaimTransactionType" />
+      <xs:element name="TransactionDate" type="xs:dateTime" />
+      <xs:element name="Claim" type="clt:ClaimBase" />
+      <xs:element name="Payment" type="clt:Payment" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ClaimInfo">
@@ -684,6 +806,24 @@
             <xs:annotation>
               <xs:documentation xml:lang="en-US">The discount amount that is due to be granted.</xs:documentation>
               <xs:documentation xml:lang="is-IS">Afsláttur sem verður veittur þegar innheimtukrafa er greidd miðað við stöðu.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PrincipalRemaining" type="ct:Amount" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en-US">TODO: Ensk</xs:documentation>
+              <xs:documentation xml:lang="is-IS">Heildar upphæð sem greidd hefur verið inn á kröfu.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="SecondaryCollectionIdentifier" type="clt:Identifier" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en-US">TODO english translation. </xs:documentation>
+              <xs:documentation xml:lang="is-IS">Auðkenni milliinnheimtuaðila sem krafan er tengd við milliinnheimtumerkingu.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LegalCollectionIdentifier" type="clt:Identifier" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en-US">TODO english translation.</xs:documentation>
+              <xs:documentation xml:lang="is-IS">Auðkenni löginnheimtuaðila sem krafan er tengd við lögfræðimerkingu.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1129,7 +1269,7 @@
       <xs:enumeration value="CreationDate">
         <xs:annotation>
           <xs:documentation xml:lang="en-US">Reference date is creation date.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Skráningardagur er viðmiðunardagsetning.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">TODO: Kanna hvort þetta eigi að vera með. Skráningardagur er viðmiðunardagsetning.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1265,4 +1405,5 @@
       <xs:documentation xml:lang="is-IS">Einstakur lykill innheimtukröfu.</xs:documentation>
     </xs:annotation>
   </xs:element>
+
 </xs:schema>

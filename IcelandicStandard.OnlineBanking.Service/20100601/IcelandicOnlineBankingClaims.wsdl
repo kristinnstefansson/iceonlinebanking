@@ -31,6 +31,20 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="RecreateClaims">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="claims" type="clt:ClaimCollection"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RecreateClaimsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RecreateClaimsResult" type="ct:OperationID"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="CancelClaims">
         <xs:complexType>
           <xs:sequence>
@@ -129,6 +143,22 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+
+      <xs:element name="QueryClaimTransactions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="key" type="clt:ClaimKey"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="QueryClaimTransactionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="QueryClaimTransactionsResult" type="clt:ClaimTransaction" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
       <xs:element name="QueryPayments">
         <xs:complexType>
           <xs:sequence>
@@ -333,6 +363,15 @@
     </operation>
     <operation name="QueryClaim">
       <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/QueryClaim" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="QueryClaimTransactions">
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/QueryClaimTransactions" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
