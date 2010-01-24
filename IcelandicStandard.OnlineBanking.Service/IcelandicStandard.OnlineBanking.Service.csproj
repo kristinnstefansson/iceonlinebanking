@@ -84,9 +84,6 @@
     <None Include="20100601\IcelandicOnlineBankingStatements.wsdl" />
     <None Include="20100601\IcelandicOnlineBankingStatementTypes.xsd" />
     <None Include="20100601\IcelandicOnlineBankingTypes.xsd" />
-    <None Include="20100601\IcelandicOnlineBankingTypes.xsx">
-      <DependentUpon>IcelandicOnlineBankingTypes.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
