@@ -1,8 +1,8 @@
-﻿<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sws="http://IcelandicOnlineBanking/2005/12/01/Statements" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ct="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" xmlns:st="http://IcelandicOnlineBanking/2005/12/01/StatementTypes" targetNamespace="http://IcelandicOnlineBanking/2005/12/01/Statements">
+﻿<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sws="http://IcelandicOnlineBanking/2010/06/01/Statements" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ct="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" xmlns:st="http://IcelandicOnlineBanking/2010/06/01/StatementTypes" targetNamespace="http://IcelandicOnlineBanking/2010/06/01/Statements">
   <types>
-    <xs:schema elementFormDefault="qualified" targetNamespace="http://IcelandicOnlineBanking/2005/12/01/Statements">
-      <xs:import namespace="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
-      <xs:import namespace="http://IcelandicOnlineBanking/2005/12/01/StatementTypes" schemaLocation="IcelandicOnlineBankingStatementTypes.xsd"/>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://IcelandicOnlineBanking/2010/06/01/Statements">
+      <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
+      <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/StatementTypes" schemaLocation="IcelandicOnlineBankingStatementTypes.xsd"/>
       <xs:element name="GetAccountStatement">
         <xs:complexType>
           <xs:sequence>
@@ -65,7 +65,7 @@
   <binding name="IcelandicOnlineBankingStatementsSoap" type="sws:IcelandicOnlineBankingStatementsSoap">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <operation name="GetAccountStatement">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/GetAccountStatement" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/GetAccountStatement" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -74,7 +74,7 @@
       </output>
     </operation>
     <operation name="GetCurrencyRates">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/GetCurrencyRates" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/GetCurrencyRates" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>

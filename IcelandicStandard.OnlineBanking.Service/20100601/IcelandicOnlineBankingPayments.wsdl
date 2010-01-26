@@ -1,8 +1,8 @@
-<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pws="http://IcelandicOnlineBanking/2005/12/01/Payments" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ct="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" xmlns:pt="http://IcelandicOnlineBanking/2005/12/01/PaymentTypes" targetNamespace="http://IcelandicOnlineBanking/2005/12/01/Payments">
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pws="http://IcelandicOnlineBanking/2010/06/01/Payments" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ct="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" xmlns:pt="http://IcelandicOnlineBanking/2010/06/01/PaymentTypes" targetNamespace="http://IcelandicOnlineBanking/2010/06/01/Payments">
   <types>
-    <xs:schema elementFormDefault="qualified" targetNamespace="http://IcelandicOnlineBanking/2005/12/01/Payments">
-      <xs:import namespace="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
-      <xs:import namespace="http://IcelandicOnlineBanking/2005/12/01/PaymentTypes" schemaLocation="IcelandicOnlineBankingPaymentTypes.xsd"/>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://IcelandicOnlineBanking/2010/06/01/Payments">
+      <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
+      <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/PaymentTypes" schemaLocation="IcelandicOnlineBankingPaymentTypes.xsd"/>
       <xs:element name="DoPayment">
         <xs:complexType>
           <xs:sequence>
@@ -112,7 +112,7 @@
   <binding name="IcelandicOnlineBankingPaymentsSoap" type="pws:IcelandicOnlineBankingPaymentsSoap">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <operation name="DoPayment">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/DoPayment" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/DoPayment" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -121,7 +121,7 @@
       </output>
     </operation>
     <operation name="DoPayments">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/DoPayments" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/DoPayments" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -130,7 +130,7 @@
       </output>
     </operation>
     <operation name="GetPaymentResult">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/GetPaymentResult" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/GetPaymentResult" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -139,7 +139,7 @@
       </output>
     </operation>
     <operation name="GetPaymentsResult">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/GetPaymentsResult" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/GetPaymentsResult" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>

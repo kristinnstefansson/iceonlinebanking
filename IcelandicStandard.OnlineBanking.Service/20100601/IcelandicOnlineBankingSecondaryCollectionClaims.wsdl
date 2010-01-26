@@ -1,12 +1,12 @@
-﻿<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cws="http://IcelandicOnlineBanking/2005/12/01/SecondaryCollectionClaims" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ct="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" xmlns:clt="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" targetNamespace="http://IcelandicOnlineBanking/2005/12/01/SecondaryCollectionClaims">
+﻿<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cws="http://IcelandicOnlineBanking/2010/06/01/SecondaryCollectionClaims" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ct="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" xmlns:clt="http://IcelandicOnlineBanking/2010/06/01/ClaimTypes" targetNamespace="http://IcelandicOnlineBanking/2010/06/01/SecondaryCollectionClaims">
   <types>
-    <xs:schema elementFormDefault="qualified" targetNamespace="http://IcelandicOnlineBanking/2005/12/01/SecondaryCollectionClaims">
-      <xs:import namespace="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
-      <xs:import namespace="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" schemaLocation="IcelandicOnlineBankingClaimTypes.xsd"/>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://IcelandicOnlineBanking/2010/06/01/SecondaryCollectionClaims">
+      <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
+      <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/ClaimTypes" schemaLocation="IcelandicOnlineBankingClaimTypes.xsd"/>
       <xs:element name="AlterClaims">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="claims" type="clt:ClaimCollection"/>
+            <xs:element name="claims" type="clt:SecondaryCollectionClaimUpdateCollection"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -34,7 +34,7 @@
       <xs:element name="AlterClaim">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="claim" type="clt:Claim"/>
+            <xs:element name="claim" type="clt:SecondaryCollectionClaimUpdate"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -277,7 +277,7 @@
   <binding name="IcelandicOnlineBankingSecondaryCollectionClaimsSoap" type="cws:IcelandicOnlineBankingSecondaryCollectionClaimsSoap">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <operation name="AlterClaims">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/AlterClaims" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/AlterClaims" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -286,7 +286,7 @@
       </output>
     </operation>
     <operation name="CancelClaims">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/CancelClaims" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/CancelClaims" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -295,7 +295,7 @@
       </output>
     </operation>
     <operation name="AlterClaim">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/AlterClaim" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/AlterClaim" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -304,7 +304,7 @@
       </output>
     </operation>
     <operation name="CancelClaim">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/CancelClaim" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/CancelClaim" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -313,7 +313,7 @@
       </output>
     </operation>
     <operation name="GetClaimOperationResult">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/GetClaimOperationResult" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/GetClaimOperationResult" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -322,7 +322,7 @@
       </output>
     </operation>
     <operation name="QueryClaims">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/QueryClaims" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/QueryClaims" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -331,7 +331,7 @@
       </output>
     </operation>
     <operation name="QueryClaim">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/QueryClaim" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/QueryClaim" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -340,7 +340,7 @@
       </output>
     </operation>
     <operation name="QuerySecondaryCollectionPayments">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/QuerySecondaryCollectionPayments" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/QuerySecondaryCollectionPayments" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -349,7 +349,7 @@
       </output>
     </operation>
     <operation name="QuerySecondaryCollectionClaims">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/QuerySecondaryCollectionClaims" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/QuerySecondaryCollectionClaims" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -358,7 +358,7 @@
       </output>
     </operation>
     <operation name="SecondaryCollectionReturnClaim">
-      <soap:operation soapAction="http://IcelandicOnlineBanking/2005/12/01/SecondaryCollectionReturnClaim" style="document"/>
+      <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/SecondaryCollectionReturnClaim" style="document"/>
       <input>
         <soap:body use="literal"/>
       </input>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema targetNamespace="http://IcelandicOnlineBanking/2005/12/01/StatementTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" xmlns:st="http://IcelandicOnlineBanking/2005/12/01/StatementTypes" elementFormDefault="qualified" attributeFormDefault="unqualified" id="CommonTypes">
-  <xs:import namespace="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
+<xs:schema targetNamespace="http://IcelandicOnlineBanking/2010/06/01/StatementTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" xmlns:st="http://IcelandicOnlineBanking/2010/06/01/StatementTypes" elementFormDefault="qualified" attributeFormDefault="unqualified" id="CommonTypes">
+  <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
   <xs:complexType name="AccountStatementResponse">
     <xs:sequence>
       <xs:element name="Account" type="ct:AccountID">

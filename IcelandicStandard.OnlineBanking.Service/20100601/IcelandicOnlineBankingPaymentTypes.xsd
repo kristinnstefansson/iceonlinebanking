@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema targetNamespace="http://IcelandicOnlineBanking/2005/12/01/PaymentTypes" xmlns:pt="http://IcelandicOnlineBanking/2005/12/01/PaymentTypes" xmlns:ct="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" id="CommonTypes">
-  <xs:import namespace="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
+<xs:schema targetNamespace="http://IcelandicOnlineBanking/2010/06/01/PaymentTypes" xmlns:pt="http://IcelandicOnlineBanking/2010/06/01/PaymentTypes" xmlns:ct="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" id="CommonTypes">
+  <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
   <xs:complexType name="ABGiro">
     <xs:annotation>
       <xs:documentation xml:lang="en-US">Describes an ABGiro payment</xs:documentation>
