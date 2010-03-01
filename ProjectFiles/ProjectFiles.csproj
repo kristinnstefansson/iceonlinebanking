@@ -42,10 +42,6 @@
     <Content Include="Assemblies\WSE2.0\Microsoft.Web.Services2.dll" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tools\WSE 2.0 SP3\Microsoft WSE 2.0 SP3 Runtime.msi" />
-    <None Include="Tools\WSE 2.0 SP3\Microsoft WSE 2.0 SP3.msi" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Properties\" />
     <Folder Include="Tools\ThinkTecture\" />
   </ItemGroup>
