@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="IcelandicStandard.OnlineBanking.Service.Schema20100601.Service1" CodeBehind="Service1.svc.cs" %>
