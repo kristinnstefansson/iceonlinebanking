@@ -6,7 +6,7 @@
       <xs:element name="AlterClaims">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="claims" type="clt:SecondaryCollectionClaimUpdateCollection"/>
+            <xs:element name="claims" type="clt:ClaimCollection"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -34,7 +34,7 @@
       <xs:element name="AlterClaim">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="claim" type="clt:SecondaryCollectionClaimUpdate"/>
+            <xs:element name="claim" type="clt:Claim"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>

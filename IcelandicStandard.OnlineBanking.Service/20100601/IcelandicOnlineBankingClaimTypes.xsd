@@ -29,74 +29,79 @@
   </xs:complexType>
   <xs:simpleType name="ClaimSubType">
     <xs:annotation>
-      <xs:documentation xml:lang="en-US">TODO: Information about sub-types of claims.</xs:documentation>
-      <xs:documentation xml:lang="is-IS">TODO:</xs:documentation>
+      <xs:documentation xml:lang="en-US">Specifies the sub-type of a claim.</xs:documentation>
+      <xs:documentation xml:lang="is-IS">Tilgreinir undirtegund kröfu.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:enumeration value="NormalClaim">
+      <xs:enumeration value="StandardClaim">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO:</xs:documentation>
+          <xs:documentation xml:lang="en-US">Standard, basic claim.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Venjuleg krafa.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="LightClaim">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO: létt krafa.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Claim that only specifies basic claim properties but carries no charges or penalty interest. The lifetime must not be longer than 6 months.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Léttkrafa sem aðeins tilgreinir frumeigindi kröfu en ber ekki vexti eða gjöld. Líftími slíkra krafna er bundinn við 6 mánuði.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="OptionalPaymentClaim">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO: valgreiðslukrafa.</xs:documentation>
+          <xs:documentation xml:lang="en-US">A claim that the payer has no obligation to pay and should be able to delete in the interface of the appropriate netbank.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Valgreiðslukrafa sem kröfugreiðandi getur valið um hvort hann greiðir og ætti að geta eitt í viðmóti vefbanka.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="LightOptionalClaim">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO: létt valgreiðslukrafa.</xs:documentation>
+          <xs:documentation xml:lang="en-US">A claim that combines the qualities of the light and optional claims.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Léttvalgreiðslukrafa, sem sameinar kosti léttkröfu og valgreiðslukröfu.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="RepaymentClaim">
+      <xs:enumeration value="RefundClaim">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO: endurgreiðslukrafa.</xs:documentation>
+          <xs:documentation xml:lang="en-US">A claim where the claimant is reimbursing the payer of an original claim. Can only be used when there exists a registration for direct payment on behalf of the payer, which is used to find the account where the amount should be deposited.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Endurgreiðslukrafa, þar sem kröfuhafi er að endurgreiða greiðanda upphaflegrar kröfu. Aðeins hægt í þeim tilvikum þar sem beingreiðslubeiðni er skráð, svo finna megi innleggsreikning.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="CommonRevolvingClaim">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO: Veltukrafa, almenn.</xs:documentation>
+          <xs:documentation xml:lang="en-US">A claim where the payer is only obliged to pay a part of the amount.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Veltukrafa, þar sem kröfugreiðandi getur sloppið við að greiða aðeins vissa upphæð en ekki fulla upphæð kröfunnar.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="CustomRevolvingClaim">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO: veltukrafa, sérstaklega útbúin fyrir Borgun. ATH???</xs:documentation>
+          <xs:documentation xml:lang="en-US">A special subset of revolving claims that is meant for use by Borgun.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Veltukrafa, sérstaklega útbúin fyrir Borgun.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="RevolvingClaimSettings">
     <xs:annotation>
-      <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-      <xs:documentation xml:lang="is-IS">TODO:</xs:documentation>
+      <xs:documentation xml:lang="en-US">Settings which are used to control the behavior of revolving claims and required for that type.</xs:documentation>
+      <xs:documentation xml:lang="is-IS">Stillingar sem ráða hegðun valgreiðslukrafna, verða að vera til staða rá þeirri tegund krafna.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="EffectiveDateAmount" type="ct:Amount" default="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO:</xs:documentation>
+          <xs:documentation xml:lang="en-US">With revolving claims the payer can choose to pay a sum equal to the effective amount or higher.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Á veltukröfum getur kröfugreiðandi valið að greiða upphæð sem er jöfn eða hærri en valgreiðsluupphæðinni.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="EffectiveDate" type="xs:date">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO:</xs:documentation>
+          <xs:documentation xml:lang="en-US">The payer has until the effective date to pay the effective amount, after that date has passed he has to pay the usual amount.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Gildisdagur valgreiðsluupphæðar, eftir þessa dagsetningu er aðeins hægt að greiða fullnaðargreiðslu.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="IsCancelledOnPayment" type="xs:boolean" default="false"/>
+    <xs:attribute name="IsCancelledOnPayment" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation xml:lang="en-US">If set to true, the claim will be cancelled on the effective day, on the condition that the payer has already paid a sum equal or higher than the effective amount. If false, the claim remains while full payment has not been made and the cancellation date has not passed.</xs:documentation>
+        <xs:documentation xml:lang="is-IS">Sett sem true ef krafan á að falla niður við greiðslu sem er jafngild gildisdagsupphæð eða meiri. Ef false þá lifir krafan þangað til fullnaðargreiðsla hefur verið greidd eða fram að niðurfellingardegi.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:simpleType name="PrintInformation">
     <xs:annotation>
@@ -166,6 +171,12 @@
           <xs:documentation xml:lang="is-IS">Innheimtukrafa hefur verið sett í lögfræðiinnheimtu</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="Invalid">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">Claim was invalid when created.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Innheimtukrafa hefur lent á villu við stofnun.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="BatchStatus">
@@ -202,8 +213,8 @@
   </xs:simpleType>
   <xs:simpleType name="Identifier">
     <xs:annotation>
-      <xs:documentation xml:lang="en-US">TODO Fix translation An identifier unique to each claimant indicating primarily the account into which payments will be made. Can consist of alphanumeric characters, maximum three letters.</xs:documentation>
-      <xs:documentation xml:lang="is-IS">Auðkenni kröfuhafa sem segir til ráðstöfun greiðslu og textalykil kröfu sem tengd er honum. Má vera tölu- og bókstafir alls 3 stafa langt.</xs:documentation>
+      <xs:documentation xml:lang="en-US">An identifier that indicates the account into which payments will be made and the associated text key. Can consist of alphanumeric characters, maximum three letters. The Identifier is also associated with a particular bank branch, the branch code used in the claim key much always match that branch.</xs:documentation>
+      <xs:documentation xml:lang="is-IS">Auðkenni kröfuhafa sem segir til ráðstöfun greiðslu og textalykil kröfu sem tengd er honum. Má vera tölu- og bókstafir alls 3 stafa langt. Auðkennið er tengt bankaútibúi, gæta verður þess að númer þess útibús sé notað sem bankanúmer í lykli kröfu.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="[0-9A-Za-z]{3}"/>
@@ -571,8 +582,8 @@
   </xs:complexType>
   <xs:complexType name="ClaimBase">
     <xs:annotation>
-      <xs:documentation xml:lang="en-US">TODO: Encapsulates a claim, used for creating and changing.</xs:documentation>
-      <xs:documentation xml:lang="is-IS">Hjúpar innheimtukröfu, notað við stofnun og breytingar.</xs:documentation>
+      <xs:documentation xml:lang="en-US">The base claim is used in historical data, with the derived Claim type containing further information used for creating and manipulating claims.</xs:documentation>
+      <xs:documentation xml:lang="is-IS">Inniheldur grunngögn notuð við að birta sögulegar upplýsingar um kröfu en Claim tagið erfir þennan grunn og bætir við upplýsingum fyrir stofnun og breytingu.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="Key" type="clt:ClaimKey">
@@ -595,8 +606,8 @@
       </xs:element>
       <xs:element name="Identifier" type="clt:Identifier">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO: English translation The unique identifier of the claimant that the claim relates to.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Það auðkenni kröfuhafa sem innheimtukrafan tengist og segir til um ráðstöfun greiðslu og textalykil.</xs:documentation>
+          <xs:documentation xml:lang="en-US">An identifier that indicates the account into which payments will be made and the associated text key. Can consist of alphanumeric characters, maximum three letters. The Identifier is also associated with a particular bank branch, the branch code used in the claim key much always match that branch.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Auðkenni kröfuhafa sem segir til ráðstöfun greiðslu og textalykil kröfu sem tengd er honum. Má vera tölu- og bókstafir alls 3 stafa langt. Auðkennið er tengt bankaútibúi, gæta verður þess að númer þess útibús sé notað sem bankanúmer í lykli kröfu.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Principal" type="ct:Amount">
@@ -683,9 +694,9 @@
           <xs:documentation xml:lang="is-IS">Segir til um hvort greiða megi inn á innheimtukröfu eða ekki.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="TypeOfClaim" type="clt:ClaimSubType" default="NormalClaim">
+      <xs:element name="TypeOfClaim" type="clt:ClaimSubType" default="StandardClaim">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
+          <xs:documentation xml:lang="en-US">The type of the claim.</xs:documentation>
           <xs:documentation xml:lang="is-IS">Segir til undirtegund innheimtukröfu.</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -697,16 +708,16 @@
       </xs:element>
       <xs:element name="RevolvingClaimSettings" type="clt:RevolvingClaimSettings" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO: </xs:documentation>
+          <xs:documentation xml:lang="en-US">Settings for revolving claims.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Stillingar valgreiðslukrafna.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Claim">
     <xs:annotation>
-      <xs:documentation xml:lang="en-US">TODO: Information about the current status of a claim.</xs:documentation>
-      <xs:documentation xml:lang="is-IS">Upplýsingar um stöðu innheimtukröfu.</xs:documentation>
+      <xs:documentation xml:lang="en-US">The standard type used for creating and changing claims.</xs:documentation>
+      <xs:documentation xml:lang="is-IS">Krafa, notað við stofnun og breytingar á kröfum.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="clt:ClaimBase">
@@ -729,93 +740,93 @@
   </xs:complexType>
   <xs:simpleType name="ClaimTransactionType">
     <xs:annotation>
-      <xs:documentation xml:lang="en-US">.</xs:documentation>
+      <xs:documentation xml:lang="en-US">The types of transaction associated with a claim.</xs:documentation>
       <xs:documentation xml:lang="is-IS">Færslugerð kröfu.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="Creation">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Claim created.</xs:documentation>
           <xs:documentation xml:lang="is-IS">Stofnun kröfu.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="Cancellation">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Cancellation of claim, either by the claimant or according to rules.</xs:documentation>
           <xs:documentation xml:lang="is-IS">Niðurfelling kröfu af kröfuhafa eða eftir gildandi reglu.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="Update">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Claim updated.</xs:documentation>
           <xs:documentation xml:lang="is-IS">Breyting á kröfu.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="Payment">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Payment, either full payment or partial payment.</xs:documentation>
           <xs:documentation xml:lang="is-IS">Greiðsla á kröfu. Innborgun eða fullnaðargreiðsla.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="RepaymentClaimCreation">
+      <xs:enumeration value="RefundClaimCreation">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Claim created.</xs:documentation>
           <xs:documentation xml:lang="is-IS">Stofnun á endurgreiðslukröfu.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Bakfærsla">
+      <xs:enumeration value="ReAdjustment">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">TODO betri þýðing.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Bakfærsla  .</xs:documentation>
+          <xs:documentation xml:lang="en-US">Re-adjustment of claim transaction.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Bakfærsla á kröfufærslu.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="BakfærðGreiðsla">
+      <xs:enumeration value="PaymentReAdjustment">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Bakfærð greiðsla. Við bakfærslu á fullnaðargreiðslu er greiðslufærslan merkt með A í færslugerð, en bakfærslan fær U í færslugerð.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Re-adjustment of payment. When a final payment is re-adjusted, the payment is marked as ReAdjustment with a matching record for the re-adjustment using this code.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Bakfærð greiðsla. Við bakfærslu á fullnaðargreiðslu er greiðslufærslan merkt með sem ReAdjustment í færslugerð, en sjálf bakfærslan fær þessa merkingu.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="BakfærðInnborgun">
+      <xs:enumeration value="PartialPaymentReAdjustment">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Bakfærð innborgun. Við bakfærslu á innborgun er innborgunarfærslan merkt.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Re-adjustment of partial payment. When a final payment is re-adjusted, the payment is marked as ReAdjustment with a matching record for the re-adjustment using this code.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Bakfærð innborgun. Við bakfærslu á innborgun er greiðslufærslan merkt með sem ReAdjustment í færslugerð, en sjálf bakfærslan fær þessa merkingu.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="TransferFromOldBank">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Claim was transferred from a bank branch. Mainly when branches are merged.</xs:documentation>
           <xs:documentation xml:lang="is-IS">Sameining banka. Krafa hefur verið flutt úr einum banka í annan.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="TransferToNewBank">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Sameining banka. Krafa hefur verið flutt í bankann úr öðrum banka.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Claim was transferred to a bank branch. Mainly when branches are merged.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Sameining banka. Krafa hefur verið flutt úr einum banka í annan.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="RepaymentClaimPayment">
+      <xs:enumeration value="OptionalClaimCancellationByPayor">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Greiðsla á endurgreiðslukröfu.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="PayorCancellation">
-        <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
+          <xs:documentation xml:lang="en-US">Cancellation of optional claim by the payer.</xs:documentation>
           <xs:documentation xml:lang="is-IS">Niðurfelling kröfugreiðanda á valgreiðslu kröfu.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Refund">
+      <xs:enumeration value="RefundPayment">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Breyting á kröfu.</xs:documentation>
+          <xs:documentation xml:lang="en-US">The payment of a refund claim.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Greiðsla endurgreiðslukrafa.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CollectionCautionSentByBank">
+        <xs:annotation>
+          <xs:documentation xml:lang="en-US">The bank issued a cautionary statemtent. This transaction type will only appear when the banking institution is ready to able to give this information and will never reflect </xs:documentation>
+          <xs:documentation xml:lang="is-IS">Innheimtuviðvörun var send út frá banka. Er eingöngu til upplýsinga í þeim tilvikum þar sem bankastofnun er tilbúin að láta þessar upplýsingar í té og endurspeglar ekki neinar útsendingar sem kunna að hafa gerst í kerfum viðskiptamanna né innheimtufyrirtækja.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ClaimTransaction">
     <xs:annotation>
-      <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
+      <xs:documentation xml:lang="en-US">Encapsulates information about the status of a claim associated with a particular event in its lifetime.</xs:documentation>
       <xs:documentation xml:lang="is-IS">Upplýsingar um stöðu á innheimtukröfu tengt tiltekinni aðgerð eða hreyfingu.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -889,19 +900,19 @@
           </xs:element>
           <xs:element name="PrincipalRemaining" type="ct:Amount" minOccurs="0">
             <xs:annotation>
-              <xs:documentation xml:lang="en-US">TODO english translation.</xs:documentation>
-              <xs:documentation xml:lang="is-IS">Heildar upphæð sem greidd hefur verið inn á kröfu.</xs:documentation>
+              <xs:documentation xml:lang="en-US">The remaing principal of the claim.</xs:documentation>
+              <xs:documentation xml:lang="is-IS">Heildar upphæð sem stendur eftir af kröfu.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="SecondaryCollectionIdentifier" type="clt:Identifier" minOccurs="0">
             <xs:annotation>
-              <xs:documentation xml:lang="en-US">TODO english translation. </xs:documentation>
+              <xs:documentation xml:lang="en-US">The identifier of the secondary collection party that handles the claim when it has been marked for secondary collection.</xs:documentation>
               <xs:documentation xml:lang="is-IS">Auðkenni milliinnheimtuaðila sem krafan er tengd við milliinnheimtumerkingu.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="LegalCollectionIdentifier" type="clt:Identifier" minOccurs="0">
             <xs:annotation>
-              <xs:documentation xml:lang="en-US">TODO english translation.</xs:documentation>
+              <xs:documentation xml:lang="en-US">The identifier of the legal collection party that handles the claim when it has been marked for legal collection.</xs:documentation>
               <xs:documentation xml:lang="is-IS">Auðkenni löginnheimtuaðila sem krafan er tengd við lögfræðimerkingu.</xs:documentation>
             </xs:annotation>
           </xs:element>
@@ -1218,38 +1229,6 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="SecondaryCollectionClaimUpdate">
-  <xs:annotation>
-    <xs:documentation xml:lang="en-US">TODO:</xs:documentation>
-    <xs:documentation xml:lang="is-IS">TODO: Sérstök gerð af innheimtukröfu sem notuð er við uppfærslu krafna í milliinnheimtu.</xs:documentation>
-  </xs:annotation>
-  <xs:sequence>
-    <xs:element name="Key" type="clt:ClaimKey">
-      <xs:annotation>
-        <xs:documentation xml:lang="en-US">The combination of fields that uniquely identifies a claim.</xs:documentation>
-        <xs:documentation xml:lang="is-IS">Samsett svæði fyrir einkvæman lykil innheimtukröfu.</xs:documentation>
-      </xs:annotation>
-    </xs:element>
-    <xs:element name="CancellationDate" type="xs:date">
-      <xs:annotation>
-        <xs:documentation xml:lang="en-US">Date of cancellation, when the claim is no longer valid in the system.</xs:documentation>
-        <xs:documentation xml:lang="is-IS">Niðurfellingardagur innheimtukröfu, hve lengi á krafan að lifa í innheimtukerfi.</xs:documentation>
-      </xs:annotation>
-    </xs:element>
-    <xs:element name="OtherDefaultCosts" type="ct:Amount" default="0">
-      <xs:annotation>
-        <xs:documentation xml:lang="en-US">For special charges, e.g. temporary collection charge, to be paid by the payer of the claim.</xs:documentation>
-        <xs:documentation xml:lang="is-IS">Annar vanskilakostnaður.</xs:documentation>
-      </xs:annotation>
-    </xs:element>
-    <xs:element name="IsPartialPaymentAllowed" type="xs:boolean" default="true">
-      <xs:annotation>
-        <xs:documentation xml:lang="en-US">Indicates whether partial payment is permitted.</xs:documentation>
-        <xs:documentation xml:lang="is-IS">Segir til um hvort greiða megi inn á innheimtukröfu eða ekki.</xs:documentation>
-      </xs:annotation>
-    </xs:element>
-  </xs:sequence>
-</xs:complexType>
   <xs:complexType name="SecondaryCollectionClaimsQuery">
     <xs:annotation>
       <xs:documentation xml:lang="en-US">Query on claims in secondary collection.</xs:documentation>
@@ -1377,12 +1356,6 @@
           <xs:documentation xml:lang="is-IS">Niðurfellingardagur er viðmiðunardagsetning.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="CreationDate">
-        <xs:annotation>
-          <xs:documentation xml:lang="en-US">Reference date is creation date.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">TODO: Kanna hvort þetta eigi að vera með. Skráningardagur er viðmiðunardagsetning.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ClaimsQueryDateSpan">
@@ -1420,8 +1393,8 @@
       </xs:element>
       <xs:element name="Identifier" type="clt:Identifier" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en-US">The unique identifier of the claimant used to filter the query. If empty, data will be returned for all identifiers.</xs:documentation>
-          <xs:documentation xml:lang="is-IS">Auðkenni kröfuhafa sem notað er til síunar. Gögnum er skilað fyrir öll auðkenni ef gildið er ekki sent inn.</xs:documentation>
+          <xs:documentation xml:lang="en-US">An identifier that indicates the account into which payments will be made and the associated text key. Can consist of alphanumeric characters, maximum three letters. The Identifier is also associated with a particular bank branch, the branch code used in the claim key much always match that branch.</xs:documentation>
+          <xs:documentation xml:lang="is-IS">Auðkenni kröfuhafa sem segir til ráðstöfun greiðslu og textalykil kröfu sem tengd er honum. Má vera tölu- og bókstafir alls 3 stafa langt. Auðkennið er tengt bankaútibúi, gæta verður þess að númer þess útibús sé notað sem bankanúmer í lykli kröfu.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Period" type="clt:ClaimsQueryDateSpan">
@@ -1493,15 +1466,6 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element ref="clt:Claim" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="SecondaryCollectionClaimUpdateCollection">
-    <xs:annotation>
-      <xs:documentation xml:lang="en-US">TODO: List of claims in secondary collection.</xs:documentation>
-      <xs:documentation xml:lang="is-IS">TODO: Listi af milliinnheimtukröfum.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="ClaimCollection" type="clt:SecondaryCollectionClaimUpdate" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ClaimKeyCollection">
