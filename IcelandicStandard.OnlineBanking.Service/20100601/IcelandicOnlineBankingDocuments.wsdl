@@ -1,0 +1,111 @@
+﻿<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sws="http://IcelandicOnlineBanking/2010/06/01/Documents" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ct="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" xmlns:dt="http://IcelandicOnlineBanking/2010/06/01/DocumentTypes" targetNamespace="http://IcelandicOnlineBanking/2010/06/01/Documents">
+    <types>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://IcelandicOnlineBanking/2010/06/01/Documents">
+            <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
+            <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/DocumentTypes" schemaLocation="IcelandicOnlineBankingDocumentTypes.xsd"/>
+            <xs:element name="GetDocumentTypes"/>
+            <xs:element name="GetDocumentTypesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="documentTypes" type="dt:DocumentTypeResponse" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UploadDocument">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="uploadDocument" type="dt:UploadDocument" minOccurs="1"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UploadDocumentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="documentID" type="ct:OperationID" minOccurs="1"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetDocumentOperationResult">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="documentOperation" type="dt:DocumentOperation" minOccurs="1"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetDocumentOperationResultResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="documentOperationResponse" type="dt:DocumentOperationResponse" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+    <message name="GetDocumentTypesSoapIn">
+        <part name="parameters" element="sws:GetDocumentType"/>
+    </message>
+    <message name="GetDocumentTypesSoapOut">
+        <part name="parameters" element="sws:GetDocumentTypeResponse"/>
+    </message>
+    <message name="UploadDocumentSoapIn">
+        <part name="parameters" element="sws:UploadDocument"/>
+    </message>
+    <message name="UploadDocumentSoapOut">
+        <part name="parameters" element="sws:UploadDocumentResponse"/>
+    </message>
+    <message name="GetDocumentOperationResultSoapIn">
+        <part name="parameters" element="sws:GetDocumentOperationResult"/>
+    </message>
+    <message name="GetDocumentOperationResultSoapOut">
+        <part name="parameters" element="sws:GetDocumentOperationResultResponse"/>
+    </message>
+    <portType name="IcelandicOnlineBankingDocumentsSoap">
+        <operation name="GetDocumentTypes">
+            <input message="sws:GetDocumentTypesSoapIn"/>
+            <output message="sws:GetDocumentTypesSoapOut"/>
+        </operation>
+        <operation name="UploadDocument">
+            <input message="sws:UploadDocumentSoapIn"/>
+            <output message="sws:UploadDocumentSoapOut"/>
+        </operation>
+        <operation name="GetDocumentOperationResult">
+            <input message="sws:GetDocumentOperationResultSoapIn"/>
+            <output message="sws:GetDocumentOperationResultSoapOut"/>
+        </operation>
+    </portType>
+    <binding name="IcelandicOnlineBankingDocumentsSoap" type="sws:IcelandicOnlineBankingDocumentsSoap">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetDocumentTypes">
+            <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/GetDocumentTypes" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="UploadDocument">
+            <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/UploadDocument" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetDocumentOperationResult">
+            <soap:operation soapAction="http://IcelandicOnlineBanking/2010/06/01/GetDocumentOperationResult" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="IcelandicOnlineBankingStatementsService">
+        <port name="IcelandicOnlineBankingDocumentsSoap" binding="sws:IcelandicOnlineBankingDocumentsSoap">
+            <soap:address location="http://localhost/IcelandicOnlineBankingWebService/IcelandicOnlineBankingDocuments.asmx"/>
+        </port>
+    </service>
+</definitions>

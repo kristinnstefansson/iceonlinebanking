@@ -2,4 +2,5 @@
 	<import namespace="http://IcelandicOnlineBanking/2010/06/01/Payments" location="IcelandicOnlineBankingPayments.wsdl"/>	
 	<import namespace="http://IcelandicOnlineBanking/2010/06/01/Statements" location="IcelandicOnlineBankingStatements.wsdl"/>
 	<import namespace="http://IcelandicOnlineBanking/2010/06/01/Claims" location="IcelandicOnlineBankingClaims.wsdl"/>
+    <import namespace="http://IcelandicOnlineBanking/2010/06/01/Documents" location="IcelandicOnlineBankingDocuments.wsdl"/>
 </definitions>

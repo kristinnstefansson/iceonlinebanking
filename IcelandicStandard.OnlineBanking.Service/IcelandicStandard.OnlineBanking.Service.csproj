@@ -72,6 +72,8 @@
     <None Include="20100601\IcelandicOnlineBanking.wsdl" />
     <None Include="20100601\IcelandicOnlineBankingClaims.wsdl" />
     <None Include="20100601\IcelandicOnlineBankingClaimTypes.xsd" />
+    <None Include="20100601\IcelandicOnlineBankingDocuments.wsdl" />
+    <None Include="20100601\IcelandicOnlineBankingDocumentTypes.xsd" />
     <None Include="20100601\IcelandicOnlineBankingPayments.wsdl" />
     <None Include="20100601\IcelandicOnlineBankingPaymentTypes.xsd" />
     <None Include="20100601\IcelandicOnlineBankingSecondaryCollection.wsdl" />

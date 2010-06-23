@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://IcelandicOnlineBanking/2010/06/01/DocumentTypes"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" xmlns:dt="http://IcelandicOnlineBanking/2010/06/01/DocumentTypes" elementFormDefault="qualified" attributeFormDefault="unqualified" id="DocumentTypes">
+    <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
+    <xs:complexType name="DocumentTypeResponse">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="TypeID" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Einkvæmt númer skjalategundar.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Heiti skjalategundar.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UploadDocument">
+        <xs:sequence>
+            <xs:element name="IDNumber" type="ct:PersonID">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Kennitala fyrirtækis.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Skráarheiti.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TypeID" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Einkvæmt númer skjalategundar.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DocumentOperation">
+        <xs:sequence>
+            <xs:element name="DocumentID" type="ct:OperationID" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Einkvæmt númer skjals.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DateFrom" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Dagsetning frá og með.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DateTo" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Dagsetning til og með.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DocumentOperationResponse">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="TotalAddedCount" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Fjöldi færslna sem voru skráðar.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TotalNotAddedCount" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Fjöldi færslna sem ekki voru skráðar.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Date" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Dagsetnign þegar skráin var send inn.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Skráarheiti.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocumentID" type="ct:OperationID">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en-US">TODO: Translate</xs:documentation>
+                    <xs:documentation xml:lang="is-IS">Einkvæmt númer skjals.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+</xs:schema>
