@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema targetNamespace="http://IcelandicOnlineBanking/2010/06/01/StatementTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" xmlns:st="http://IcelandicOnlineBanking/2010/06/01/StatementTypes" elementFormDefault="qualified" attributeFormDefault="unqualified" id="CommonTypes">
   <xs:import namespace="http://IcelandicOnlineBanking/2010/06/01/CommonTypes" schemaLocation="IcelandicOnlineBankingTypes.xsd"/>
- 	<xs:complexType name="AccountStatementResponse">
+	<xs:complexType name="AccountStatementResponse">
 		<xs:sequence>
 			<xs:element name="Account" type="ct:AccountID">
 				<xs:annotation>
@@ -206,12 +206,14 @@
 	<xs:complexType name="UnpaidClaimInfo">
 		<xs:sequence>
 			<xs:element name="PayeeID" type="ct:PersonID">
+        <!-- ath tagið-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">Person ID of payee</xs:documentation>
 					<xs:documentation xml:lang="is-IS">Kennitala kröfuhafa /útgefanda kröfu.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Account" type="ct:AccountID">
+        <!-- ath tagið-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">The Bank number of the claim, ledger number and number of claim.</xs:documentation>
 					<xs:documentation xml:lang="is-IS">Bankanúmer, höfuðbók og númer innheimtukröfu.</xs:documentation>
@@ -230,6 +232,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="PayorID" type="ct:PersonID">
+        <!-- ath tagið-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">The payor of the claim </xs:documentation>
 					<xs:documentation xml:lang="is-IS">kenintala greiðanda kröfunnar / skuldabréfs </xs:documentation>
@@ -242,12 +245,14 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Identifier" type="xs:string" minOccurs="0">
+        <!-- ath tagið-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US"/>
 					<xs:documentation xml:lang="is-IS"/>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="CapitalAmount" type="ct:Amount">
+        <!-- ath heitið, hvort passar við kröfu -->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">Capital amount of claim.</xs:documentation>
 					<xs:documentation xml:lang="is-IS">Upphæð höfuðstóls innheimtukröfu.</xs:documentation>
@@ -320,6 +325,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="CustomerNumber" type="xs:string" minOccurs="0">
+        <!-- ath tagið-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">Customer number of payor, claimant's unique code for the customer.</xs:documentation>
 					<xs:documentation xml:lang="is-IS">Einkvæmt viðskiptanúmer greiðanda í kerfi kröfuhafa.</xs:documentation>
@@ -332,11 +338,13 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="ClaimType" type="st:ClaimType">
+        <!-- ath lýsinguna-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">Claimant's text key, explanation of payment. Optional property of claim.</xs:documentation>
 					<xs:documentation xml:lang="is-IS">Textalykill kröfuhafa, skýring á greiðslu. Valkvætt eigindi á innheimtukröfu.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+      <!-- ath hvort bæta þarf við hvort um skuldfærslu/beingreiðslu er að ræða.-->
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UnpaidClaimResponse">
@@ -345,6 +353,8 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="ClaimType">
+    <!-- ath heitið rekst á við kröfutegundir. UnpaidClaimType?
+    Þýða heiti.-->
 		<xs:annotation>
 			<xs:documentation xml:lang="en-US">Type of the claim</xs:documentation>
 			<xs:documentation xml:lang="is-IS">Tegund kröfunnar / skuldabréfsins</xs:documentation>
@@ -389,6 +399,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="AccountInfo">
+        <!-- ath uppbyggingu, AccountInfo og AccountInfoResponse-->
 		<xs:sequence>
 			<xs:element name="Account" type="ct:AccountID">
 				<xs:annotation>
@@ -399,8 +410,10 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AccountInfoResponse">
+        <!-- ath uppbyggingu, AccountInfo og AccountInfoResponse-->
 		<xs:sequence>
 			<xs:element name="Account" type="ct:AccountID">
+        <!-- ath nafn-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">The ID of the account.</xs:documentation>
 					<xs:documentation xml:lang="is-IS">Reikningur.</xs:documentation>
@@ -431,6 +444,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Status" type="ct:Status">
+        <!-- ath heiti á tagi Status AccountStatus-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">The status of the account (open/closed).</xs:documentation>
 					<xs:documentation xml:lang="is-IS">Ástand reiknings.</xs:documentation>
@@ -473,6 +487,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Swift" type="xs:string">
+        <!-- ath tagið, skilgreina betur-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">Swift </xs:documentation>
 					<xs:documentation xml:lang="is-IS">Swift </xs:documentation>
@@ -484,7 +499,8 @@
 					<xs:documentation xml:lang="is-IS">Innvextir </xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="InterestReteOnDept" type="ct:Amount" minOccurs="0">
+			<xs:element name="InterestRateOnDept" type="ct:Amount" minOccurs="0">
+        <!-- ath tagið og heitið-->
 				<xs:annotation>
 					<xs:documentation xml:lang="en-US">Interest rate on dept </xs:documentation>
 					<xs:documentation xml:lang="is-IS">útvextir </xs:documentation>
